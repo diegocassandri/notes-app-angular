@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="box">      
+      <nz-spin [nzSpinning]="isSpinning">
+        <nz-card>
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+          <h1 style="text-align: center">TakeNote</h1>
+          <img src="assets/logo.png" style="max-width: 150px; margin-top: 10px; margin-bottom: 10%; margin-left: 28%;">
+          <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your e-mail!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="email" placeholder="E-mail" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your Password!">
+                  <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" placeholder="Password" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <div nz-row class="login-form-margin">       
+              </div>
+              <button nz-button nzType="primary" class="login-form-button login-form-margin" [disabled]="!validateForm.valid" >Log in</button>
+              Or 
+              <button nz-button nzType="default" class="login-form-button login-form-margin">Register Now</button>
+        </form> 
+      </nz-card>  
+      </nz-spin>     
+    </div>
+</div> 
+
+<!-- <div class="container-fluid">
+  <nz-spin [nzSpinning]="isSpinning">
+    <nz-card style="width:300px; margin-left: 42%; margin-top: 10%;">
+
+      <form [formGroup]="validateForm" nz-form class="login-form" (ngSubmit)="submitForm()">
+
+        <img src="assets/logo.png" style="max-width: 150px; margin-top: 10px; margin-bottom: 10%; margin-left: 20%;">
+
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your e-mail!">
+            <nz-input-group nzPrefixIcon="user">
+              <input formControlName="email" type="email" value="diego.cassandri@gmail.com" nz-input placeholder="E-mail"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control zErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input formControlName="password" type="password" nz-input placeholder="Passwrod" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button class="login-form-button" [disabled]="validateForm.invalid && validateForm.touched" [nzType]="'primary'">Entrar</button>
+            Or 
+            <a nz-button  nzPrimary href="/"> Sign Up</a>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </nz-card>
+  </nz-spin>     
+</div>
+-->
+

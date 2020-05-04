@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"notesappangulara86aba2a": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

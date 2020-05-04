@@ -1,0 +1,38 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>
+        Home
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      Notes
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+        New Note
+      </nz-breadcrumb-item>
+  </nz-breadcrumb>
+
+  <br>
+
+<nz-spin [nzSpinning]="isSpinning">
+    
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+            <nz-form-control nzErrorTip="Please input the content!">
+
+                <textarea nz-input formControlName="content" placeholder="Content" rows="8" cols="50">
+                </textarea>
+
+            </nz-form-control>
+          </nz-form-item>
+      
+          <nz-form-item>
+            <strong style="margin-right: 5px;">Attachement:</strong>
+            <a target="_blank" rel="noopener noreferrer" href="{{validateForm.value?.attachmentUrl}}">{{validateForm.value?.attachment}}</a>            
+          </nz-form-item>
+
+          <nz-form-item>
+            <input  type="file" (change)="handleFileChange($event)" />
+          </nz-form-item>
+          
+          <button nz-button nzType="primary" [disabled]="!validateForm.valid">Save</button>
+    </form>   
+  </nz-spin> 
