@@ -22,7 +22,6 @@ export class NotesComponent implements OnInit {
     this.noteService.ListAll().then(data => {
       this.notes = data;
       this.loading = false;
-      console.log(data);
     }).catch(error => this.message.create('error',error.message));
   }
 

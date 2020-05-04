@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Auth } from "aws-amplify";
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 
 @Component({
@@ -13,8 +13,12 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   isSpinning = false;
   validateForm: FormGroup;
+  loggedUserInitials: any;
 
-  constructor(private fb: FormBuilder,private message: NzMessageService, private router: Router) {}
+  constructor(private fb: FormBuilder,
+    private message: NzMessageService, 
+    private router: Router,
+    private loginService: LoginService) {}
 
   submitForm(): void {
     
@@ -25,8 +29,10 @@ export class LoginComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
 
-    Auth.signIn(this.validateForm.value.email,this.validateForm.value.password)
+    this.loginService.signIn(this.validateForm.value.email,this.validateForm.value.password)
     .then(response => {
+      localStorage.setItem('notes_app_token', response.signInUserSession.accessToken.jwtToken);
+
       this.isSpinning = false;
       this.router.navigate(['/home']);
     })

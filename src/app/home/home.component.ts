@@ -3,6 +3,7 @@ import { Auth } from "aws-amplify";
 import { Router } from '@angular/router';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +15,18 @@ export class HomeComponent implements OnInit {
 
   username = 'DC';
 
-  constructor(private router: Router,private message: NzMessageService) { }
+  constructor(private router: Router,
+    private message: NzMessageService,
+    private loginService: LoginService) { }
 
   ngOnInit(): void {
 
   }
 
   logout() {
-    Auth.signOut()
+    this.loginService.signOut()
     .then(response => {
+      localStorage.removeItem('notes_app_token');
       this.router.navigate(['/login']);
     })
     .catch(error => {

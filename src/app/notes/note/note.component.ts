@@ -35,27 +35,19 @@ export class NoteComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
 
-      if(this.file){
-        console.log('Tem Arquivo');
+      if(this.file){ 
 
-        response = await this.noteService.s3Upload(this.file);
+        try {
+          response = await this.noteService.s3Upload(this.file);
 
-        console.log(response);
-
-        this.validateForm.value.attachment = response['key'];
-
-        /*this.noteService.s3Upload(this.file)
-        .then(response => {
-          console.log(response);
           this.validateForm.value.attachment = response['key'];
-          console.log(this.validateForm.value.attachment);
-        })
-        .catch(error => this.message.error(error.message));*/
+        } catch(error) {
+          this.message.error(error.message);
+        }
       }
     
   
     if(this.isEditing){
-      console.log(this.validateForm.value);
       this.noteService.updateNote(this.validateForm.value)
       .then(response => {
         this.isSpinning = false;
@@ -111,9 +103,7 @@ export class NoteComponent implements OnInit {
   }
 
   handleFileChange(event) {
-    console.log(event);
     this.file = event.target.files[0];
-    console.log(this.file);
   }
 
 }

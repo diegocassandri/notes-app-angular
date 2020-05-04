@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -81,13 +82,14 @@ registerLocaleData(pt);
     NzPopconfirmModule,
     NzDropDownModule,
     NzAvatarModule,
-    NzUploadModule
+    NzUploadModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: pt_BR }, 
     NzMessageService, 
     FormBuilder,  
-    AmplifyService, { provide: NZ_ICONS, useValue: icons}
+    AmplifyService, { provide: NZ_ICONS, useValue: icons},
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })
