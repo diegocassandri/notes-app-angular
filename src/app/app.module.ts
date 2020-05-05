@@ -19,6 +19,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NotesComponent } from './notes/notes.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
@@ -31,6 +33,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
@@ -56,7 +59,9 @@ registerLocaleData(pt);
     HomeComponent,
     NotesComponent,
     NoteComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent,
+    ConfirmationComponent
     
   ],
   imports: [
@@ -83,6 +88,7 @@ registerLocaleData(pt);
     NzDropDownModule,
     NzAvatarModule,
     NzUploadModule,
+    NzDividerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: pt_BR }, 

@@ -9,6 +9,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class LoginService {
 
   jwthelper: JwtHelperService;
+  emailConfirmation: string;
 
   constructor() { 
     this.jwthelper = new JwtHelperService();
@@ -22,6 +23,13 @@ export class LoginService {
     return Auth.signOut();
   }
 
+  signUp(email: string, password: string) {
+    return Auth.signUp(email,password);
+  }
+
+  confirmSignUp(email: string, confirmation: string) {
+    return Auth.confirmSignUp(email,confirmation);
+  }
   isInvalidToken(): boolean {
       return this.jwthelper.isTokenExpired(localStorage.getItem('notes_app_token'));
   }

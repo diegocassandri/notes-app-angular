@@ -1,1 +1,36 @@
-<p>signup works!</p>
+<div class="container">
+    <div class="box">      
+      <nz-spin [nzSpinning]="isSpinning">
+        <nz-card>
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+          <h1 style="text-align: center">Signup on TakeNote</h1>
+          <img src="assets/logo.png" style="max-width: 150px; margin-top: 10px; margin-bottom: 10%; margin-left: 28%;">
+          <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your e-mail!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="email" placeholder="E-mail" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your Password!">
+                  <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" placeholder="Password" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control nzErrorTip="The confirmation Password must be equal password!">
+                  <nz-input-group nzPrefixIcon="lock"> 
+                    <input type="password" nz-input formControlName="confirmation" placeholder="Confirme Password" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <div nz-row class="login-form-margin">       
+              </div>
+              <button nz-button nzType="primary"  nzBlock class="login-form-button login-form-margin" [disabled]="!validateForm.valid">Signup</button>
+        </form> 
+      </nz-card>  
+      </nz-spin>     
+    </div>
+</div> 

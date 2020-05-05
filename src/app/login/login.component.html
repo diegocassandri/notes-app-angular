@@ -21,9 +21,9 @@
               </nz-form-item>
               <div nz-row class="login-form-margin">       
               </div>
-              <button nz-button nzType="primary" class="login-form-button login-form-margin" [disabled]="!validateForm.valid" >Log in</button>
-              Or 
-              <button nz-button nzType="default" class="login-form-button login-form-margin">Register Now</button>
+              <button nz-button nzType="primary" nzBlock class="login-form-button login-form-margin" [disabled]="!validateForm.valid" >Log in</button>
+              <nz-divider nzType="horizontal"></nz-divider>
+              <a nz-button nzType="default"  nzBlock class="login-form-button login-form-margin" [routerLink]="['/signup']" >Register Now</a>
         </form> 
       </nz-card>  
       </nz-spin>     

@@ -1,1 +1,24 @@
-<p>confirmation works!</p>
+<div class="container">
+    <div class="box">      
+      <nz-spin [nzSpinning]="isSpinning">
+        <nz-card>
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+          <h1 style="text-align: center">Confirm Signup on TakeNote</h1>
+          <img src="assets/logo.png" style="max-width: 150px; margin-top: 10px; margin-bottom: 10%; margin-left: 28%;">
+          <p style="text-align: center">Please check your email for the code.</p>
+            
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Insert the confirmation code!">
+                  <nz-input-group nzPrefixIcon="lock"> 
+                    <input type="text" nz-input formControlName="code" placeholder="Confirmation code" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <div nz-row class="login-form-margin">       
+              </div>
+              <button nz-button nzType="primary"  nzBlock class="login-form-button login-form-margin" [disabled]="!validateForm.valid">Signup</button>
+        </form> 
+      </nz-card>  
+      </nz-spin>     
+    </div>
+</div> 
