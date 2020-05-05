@@ -62,7 +62,6 @@ registerLocaleData(pt);
     LoginComponent,
     SignupComponent,
     ConfirmationComponent
-    
   ],
   imports: [
     BrowserModule,
