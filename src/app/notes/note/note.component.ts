@@ -4,8 +4,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from 'aws-amplify';
 import { NotesService } from '../notes.service';
-import { UploadChangeParam } from 'ng-zorro-antd/upload/interface';
-
 
 @Component({
   selector: 'app-note',
@@ -17,6 +15,7 @@ export class NoteComponent implements OnInit {
   validateForm: FormGroup;
   isSpinning = false;
   isEditing = false;
+  isLoading = false;
   file: any;
 
   constructor(private fb: FormBuilder,
@@ -73,6 +72,9 @@ export class NoteComponent implements OnInit {
 
   
   ngOnInit(): void {
+
+    this.isSpinning = true;
+
     this.validateForm = this.fb.group({
       noteId: this.fb.control(''),
       content: [null, [Validators.required]],
@@ -83,6 +85,7 @@ export class NoteComponent implements OnInit {
 
     if(this.activetedRoute.snapshot.params['id']){
       this.isEditing = true;
+      this.isLoading = true;
 
       this.noteService.ListOne(this.activetedRoute.snapshot.params['id'])
       .then(response => {
@@ -96,10 +99,20 @@ export class NoteComponent implements OnInit {
           .catch(error => this.message.error('Erro ao carregar Anexo!'));
         }
 
-      })
-      .catch(error => this.message.create('error', error.message));
-    }
+        this.isSpinning = false;
+        this.isLoading = false;
 
+      })
+      .catch(error => {
+          this.message.create('error', error.message);
+          this.isSpinning = false;
+          this.isLoading = false;
+        } 
+      );
+    };
+    if((this.isSpinning) && (!this.isLoading)){
+      this.isSpinning = false;
+    }
   }
 
   handleFileChange(event) {
